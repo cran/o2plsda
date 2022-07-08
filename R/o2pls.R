@@ -11,7 +11,7 @@
 #'    \item{Xscore}{Joint \eqn{X} scores}
 #'    \item{Xloading}{Joint \eqn{X} loadings}
 #'    \item{Yscore}{Joint \eqn{Y} scores}
-#'    \item{Yloaing}{Joint \eqn{Y} loadings}
+#'    \item{Yloading}{Joint \eqn{Y} loadings}
 #'    \item{TYosc}{Orthogonal \eqn{X} scores}
 #'    \item{PYosc}{Orthogonal \eqn{X} loadings}
 #'    \item{WYosc}{Orthogonal \eqn{X} weights}
@@ -64,6 +64,16 @@ o2pls <- function(X,Y,nc,nx,ny,scale=FALSE,center=FALSE){
         message("The combinations of # components should be fewer than the data dimensions\n")
     if(ncol(X) < min(nc)+min(nx,ny) | ncol(Y) < min(nc)+min(ny,ny))
         stop("There is no valid combination of numbers of components! Please select fewer components in nc, nx, ny.\n")
+    if (nc != round(abs(nc)) || nc <= 0) {
+        stop("nc should be a positive integer\n")
+    }
+    ###if nx =0 or ny =0
+    if(nx==0){
+        nx=nc
+    }
+    if(ny==0){
+        ny=nc
+    }
     Xt <- X
     Yt <- Y
     n <- nrow(X)
@@ -71,7 +81,7 @@ o2pls <- function(X,Y,nc,nx,ny,scale=FALSE,center=FALSE){
     ncy <- ncol(Y)
     SSX <- s2(X)
     SSY <- s2(Y)
-    #define orth	
+    #define orth
     TYosc <- matrix(0, n, nx)
     PYosc <- matrix(0, ncx, nx)
     WYosc <- matrix(0, ncx, nx)
