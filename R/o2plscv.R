@@ -112,10 +112,11 @@ o2cv<-function(X, Y, nc, nx, ny, group=NULL, nr_folds = 5, ncores=1,
         o2 <- o2@results
         #subset testing data
         Xev <- X[cls.grp == k & is.na(cls.grp)==FALSE,]
-        To <- matrix(0,nrow(Xev),nx)
+       
         
         # Predicts y_hat
         if(nx>0){
+            To <- matrix(0,nrow(Xev),nx)
         for (i in 1:nx) {
             #tx <- Xev %*% o2$WYosc[ , i,drop=F]
             tx <- eigenmult(Xev, o2$WYosc[ , i,drop=F])
@@ -130,8 +131,9 @@ o2cv<-function(X, Y, nc, nx, ny, group=NULL, nr_folds = 5, ncores=1,
         
         # Predicts x_hat
         Yev <- Y[cls.grp == k & is.na(cls.grp)==FALSE,]
-        Uo <- matrix(0,nrow(Yev),ny)
+        
         if(ny>0){
+            Uo <- matrix(0,nrow(Yev),ny)
         for (i in 1:ny) {
           #  ux <-  Yev %*% o2$CXosc[ , i,drop=F]
             ux <-  eigenmult(Yev, o2$CXosc[ , i,drop=F])

@@ -69,10 +69,14 @@ o2pls <- function(X,Y,nc,nx,ny,scale=FALSE,center=FALSE){
     }
     ###if nx =0 or ny =0
     if(nx==0){
-        nx=nc
+        nnx=nc
+    }else{
+        nnx=nx
     }
     if(ny==0){
-        ny=nc
+        nny=nc
+    }else{
+        nny=ny
     }
     Xt <- X
     Yt <- Y
@@ -82,12 +86,12 @@ o2pls <- function(X,Y,nc,nx,ny,scale=FALSE,center=FALSE){
     SSX <- s2(X)
     SSY <- s2(Y)
     #define orth
-    TYosc <- matrix(0, n, nx)
-    PYosc <- matrix(0, ncx, nx)
-    WYosc <- matrix(0, ncx, nx)
-    UXosc <- matrix(0, n, ny)
-    PXosc <- matrix(0, ncy,ny)
-    CXosc <- matrix(0, ncy, ny)
+    TYosc <- matrix(0, n, nnx)
+    PYosc <- matrix(0, ncx, nnx)
+    WYosc <- matrix(0, ncx, nnx)
+    UXosc <- matrix(0, n, nny)
+    PXosc <- matrix(0, ncy, nny)
+    CXosc <- matrix(0, ncy, nny)
     
     # Calculate the PCA components of Y'T
    ## nn<-nc+max(nx+ny)
@@ -164,8 +168,8 @@ o2pls <- function(X,Y,nc,nx,ny,scale=FALSE,center=FALSE){
     rownames(Xloading) <- rownames(PYosc) <- rownames(WYosc) <- colnames(Exy) <- colnames(Xt)
     rownames(Yloading) <- rownames(PXosc) <- rownames(CXosc) <- colnames(Fxy) <- colnames(Yt)
     colnames(Xscore) <- colnames(Yscore) <- colnames(Xloading) <- colnames(Yloading) <- paste0("LV",1:nc)
-    colnames(TYosc) <- colnames(PYosc) <- colnames(WYosc) <- paste0("LV", 1:nx)
-    colnames(UXosc) <- colnames(PXosc) <- colnames(CXosc) <- paste0("LV", 1:ny)
+    colnames(TYosc) <- colnames(PYosc) <- colnames(WYosc) <- paste0("LV", 1:nnx)
+    colnames(UXosc) <- colnames(PXosc) <- colnames(CXosc) <- paste0("LV", 1:nny)
     res <- list(Xscore=Xscore,Yscore=Yscore,Xloading=Xloading,Yloading=Yloading,
                 R2Xcorr=R2Xcorr,R2Ycorr=R2Ycorr,
                 BU = BU, BT = BT,
