@@ -4,7 +4,7 @@
 \alias{plsda}
 \title{Partial least squares discriminant analysis}
 \usage{
-plsda(X, Y, nc, scale, center)
+plsda(X, Y, nc, scale = TRUE, center = TRUE, cv = TRUE, nr_folds = 5)
 }
 \arguments{
 \item{X}{a matrix of predictor variables.}
@@ -17,6 +17,10 @@ number of orthogonal components ).}
 \item{scale}{logical indicating whether \code{X} must be scaled (suggest TRUE).}
 
 \item{center}{logical indicating whether \code{X} must be centered (suggest TRUE).}
+
+\item{cv}{logical indicating whether cross-validation will be performed or not (suggest TRUE).}
+
+\item{nr_folds}{nr_folds Integer to indicate the folds for cross validation.}
 }
 \value{
 a list containing the following elements:
@@ -30,14 +34,17 @@ or specified.}
  explanatory variables. The components retrieved correspond to the ones
  optimized or specified.}
 \item{\code{vip}}{ the VIP matrix.}
-\item{\code{xvar}}{ variance explained by each single component}}
+\item{\code{xvar}}{ variance explained of X by each single component.}
+\item{\code{R2Y}}{ variance explained of Y by each single component.}
+\item{code{PRESS}}{The residual sum of squares for the samples which were not used to fit the model}
+\item{code{Q2}}{quality of  cross-validation}}
 }
 \description{
 Perform a PLS discriminant analysis
 }
 \examples{
-X <- matrix(rnorm(50),10,5)
-Y <- rep(c(0,1),each=5)
+X <- matrix(rnorm(500),10,50)
+Y <- rep(c("a","b"),each=5)
 fit <- plsda(X,Y,2)
 }
 \author{
