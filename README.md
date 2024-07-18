@@ -7,11 +7,6 @@ _o2plsda_ provides functions to do O2PLS-DA analysis for multiple omics integrat
 In order to avoid overfitting of the model, the optimal number of latent variables for each model structure was estimated using group-balanced MCCV. The package could use the group information when we select the best paramaters with cross-validation. In cross-validation (CV) one minimizes a certain measure of error over some parameters that should be determined a priori. Here, we have three parameters: (nc, nx, ny). A popular measure is the prediction error ||Y - \hat{Y}||, where \hat{Y} is a prediction of Y. In our case the O2PLS method is symmetric in X and Y, so we minimize the sum of the prediction errors: 
 ||X - \hat{X}||+||Y - \hat{Y}||. 
 
-And we also calculate the the average Q^2 values:
-
-Q^2 = 1 - err / Var_{total};    
-
-err = Var_{expected} - Var_{estimated};   
 
 Here nc should be a positive integer, and nx and ny should be non-negative. The best integers are then the minimizers of the prediction error.
 
@@ -46,38 +41,41 @@ set.seed(123)
 ## ncores : parallel paramaters for large datasets
 cv <- o2cv(X,Y,1:5,1:3,1:3,group=group,nr_folds = 10)
 #####################################
-The best parameters are nc = 5, nx = 3, ny = 3
+## The best parameters are nc = 1, nx = 2, ny = 1
 #####################################
-The Qxy is 0.073901318688517 and the RMSE is: 2.02464376258545
+## The the RMSE is: 1.97990443734287
 #####################################
 ```
 
-Then we can do the O2PLS analysis with nc = 5, nx = 3, ny =3. You can also select the best paramaters by looking at the cross validation results.
+Then we can do the O2PLS analysis with nc = 1, nx = 2, ny =1. You can also select the best paramaters by looking at the cross validation results.
 ```{r}
-fit <- o2pls(X,Y,5,2,3)
+fit <- o2pls(X,Y,1,2,1)
 summary(fit)
-######### Summary of the O2PLS results #########
-### Call o2pls(X, Y, nc= 5 , nx= 2 , ny= 3 ) ###
-### Total variation 
-### X: 4900 ; Y: 4900  ###
-### Total modeled variation ### X: 0.261 ; Y: 0.314  ###
-### Joint, Orthogonal, Noise (proportions) ###
-               X     Y
-Joint      0.186 0.199
-Orthogonal 0.075 0.115
-Noise      0.739 0.686
-### Variation in X joint part predicted by Y Joint part: 0.901 
-### Variation in Y joint part predicted by X Joint part: 0.902 
-### Variation in each Latent Variable (LV) in Joint part: 
-    LV1   LV2   LV3   LV4   LV5
-X 0.039 0.040 0.040 0.034 0.033
-Y 0.049 0.043 0.036 0.037 0.033
-### Variation in each Latent Variable (LV) in X Orthogonal part: 
-   LV1   LV2
-X 0.04 0.036
-### Variation in each Latent Variable (LV) in Y Orthogonal part: 
-    LV1   LV2   LV3
-Y 0.045 0.037 0.034
+## 
+## ######### Summary of the O2PLS results #########
+## ### Call o2pls(X, Y, nc= 1 , nx= 2 , ny= 1 ) ###
+## ### Total variation 
+## ### X: 4900 ; Y: 4900  ###
+## ### Total modeled variation ### X: 0.108 ; Y: 0.098  ###
+## ### Joint, Orthogonal, Noise (proportions) ###
+##                X     Y
+## Joint      0.039 0.052
+## Orthogonal 0.070 0.046
+## Noise      0.892 0.902
+## ### Variation in X joint part predicted by Y Joint part: 0.882 
+## ### Variation in Y joint part predicted by X Joint part: 0.882 
+## ### Variation in each Latent Variable (LV) in Joint part: 
+##     LV1
+## X 0.039
+## Y 0.052
+## ### Variation in each Latent Variable (LV) in X Orthogonal part: 
+##     LV1   LV2
+## X 0.036 0.034
+## ### Variation in each Latent Variable (LV) in Y Orthogonal part: 
+##     LV1
+## Y 0.046
+## 
+## ############################################
 
 ############################################
 
@@ -94,8 +92,8 @@ plot(fit,type="loading",var="Xjoint", group=group,repel=F,rotation=TRUE)
 
 Do the OPLSDA based on the O2PLS results
 ```{r}
-res <- oplsda(fit,group, nc=5)
-plot(res,type="score", group=group)
+res <- oplsda(fit,group, nc=1)
+plot(res, type="score", group=group)
 vip <- vip(res)
 plot(res,type="vip", group = group, repel = FALSE,order=TRUE)
 ```

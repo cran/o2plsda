@@ -1,7 +1,7 @@
 Package: o2plsda
 Type: Package
 Title: Multiomics Data Integration
-Version: 0.0.22
+Version: 0.0.25
 Authors@R: c(person("Kai","Guo",email = "guokai8@gmail.com",
            role = c("aut", "cre")
           ),
@@ -25,9 +25,9 @@ LinkingTo: Rcpp, RcppArmadillo
 RoxygenNote: 7.3.1
 NeedsCompilation: yes
 Repository: CRAN
-Packaged: 2024-07-17 13:30:23 UTC; bioguo
+Packaged: 2024-07-18 20:02:16 UTC; bioguo
 Author: Kai Guo [aut, cre],
   Junguk Hur [aut],
   Eva Feldman [aut]
 Maintainer: Kai Guo <guokai8@gmail.com>
-Date/Publication: 2024-07-17 13:50:06 UTC
+Date/Publication: 2024-07-18 22:40:02 UTC
