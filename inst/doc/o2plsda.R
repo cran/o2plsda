@@ -2,7 +2,7 @@
 knitr::opts_chunk$set(echo = TRUE)
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  install.package("o2plsda")
+# install.package("o2plsda")
 
 ## -----------------------------------------------------------------------------
 library(o2plsda)

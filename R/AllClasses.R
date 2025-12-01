@@ -1,3 +1,6 @@
+##' @importFrom Rcpp evalCpp
+NULL
+
 ##' Class "O2pls"
 ##' This class represents the Annotation information
 ##' @name O2pls-class

@@ -1,6 +1,6 @@
-0ee6ab1c766c955e9e334fc5590cb35e *DESCRIPTION
-95ea8c21a26da85133359f4bb18db3ea *NAMESPACE
-56ef9a784d49d0b83c8a4e95f8d10b76 *R/AllClasses.R
+be5d2671be2add796a44cd17e886e33a *DESCRIPTION
+71423eeb82342c2cc432abb5014638ac *NAMESPACE
+70dfb71a5be32994d6343ad5b95bc5c9 *R/AllClasses.R
 ef160a96288849a735ad626e9c9fce42 *R/AllGenerics.R
 0156a3c425110bf0b826a2c01ca367ff *R/RcppExports.R
 c42e971578073d46ad5a811b67345445 *R/misc.R
@@ -11,10 +11,10 @@ d5f018058633d20b03d4a803974c5c51 *R/plot.R
 5aa72fb85215f0882afb5b3027c47f54 *R/plsda.R
 645ac7747ea6d5e5c61c32a7a7d31a27 *R/zzz.R
 1a96bec9a16a95701c2497cef9d47150 *README.md
-0ab75c9835efaa7e5619a39cf6586117 *build/vignette.rds
-da1a856adafd330351f214ec7a1abcf9 *inst/doc/o2plsda.R
-82254f5225802a65e5bafb90ed9a8e02 *inst/doc/o2plsda.Rmd
-21d18ad6a175e5bfb78412d0014e8efe *inst/doc/o2plsda.html
+06e5df55b9d23e50ffa8838e590d5ab2 *build/vignette.rds
+61ffad624bc948d41496d8df8e87a5ee *inst/doc/o2plsda.R
+5249259842aed1da8586c8e2fab28fbf *inst/doc/o2plsda.Rmd
+b1a1f3ebb17666e98cb5cf756f5764e8 *inst/doc/o2plsda.html
 39e9f782af8136a8513507601b176b74 *man/AtA.Rd
 e251201d15142964a55ac1a86681fdab *man/O2pls-class.Rd
 16aa5f6248a2591ca1eb2ac6cc90a793 *man/Q.Rd
@@ -59,4 +59,4 @@ d29e4e193fa672fb652e0dd7acc65234 *man/vip.Rd
 230c0e5288da771e758da587c28f08cd *src/RcppExports.cpp
 f8e0348de6cf1c439dd1ba78e5f7bdd0 *src/misc.cpp
 5e69ba523b7f8f5ae400bbb9da7238ec *src/oplsda.cpp
-82254f5225802a65e5bafb90ed9a8e02 *vignettes/o2plsda.Rmd
+5249259842aed1da8586c8e2fab28fbf *vignettes/o2plsda.Rmd
